@@ -4,8 +4,11 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="site-container header-inner">
-        <Link href="/" className="header-logo">
-          BGM
+        <Link href="/" className="header-logo-image">
+          <img
+            src="/bgm-logo.png"
+            alt="BGM Creative Studio"
+          />
         </Link>
 
         <nav className="header-nav">
