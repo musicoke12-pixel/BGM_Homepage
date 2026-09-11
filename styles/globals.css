@@ -126,18 +126,11 @@ main {
 .home-hero {
   min-height: calc(100vh - 74px);
   border-bottom: 1px solid rgba(17, 17, 17, 0.16);
-  background:
-    radial-gradient(
-      circle at 78% 38%,
-      rgba(210, 225, 235, 0.6),
-      transparent 31%
-    ),
-    linear-gradient(
-      135deg,
-      #f5f2ec 0%,
-      #f5f2ec 62%,
-      #eceff0 100%
-    );
+
+  background-image: url('/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-inner {
@@ -168,7 +161,7 @@ main {
 }
 
 .hero-logo {
-  width: min(540px, 52vw);
+  width: min(560px, 52vw);
   height: auto;
   object-fit: contain;
 }
