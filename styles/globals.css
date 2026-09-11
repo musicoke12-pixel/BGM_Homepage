@@ -17,13 +17,11 @@ html {
 }
 
 body {
-  background: #f5f2ec;
-  color: #111111;
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  background: #f7f5ef;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -51,7 +49,49 @@ button {
 }
 
 main {
-  overflow: hidden;
+  position: relative;
+}
+
+.section {
+  padding: 100px 0 120px;
+}
+
+.section-number {
+  display: block;
+  margin-bottom: 35px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.display-title {
+  margin: 0;
+  font-size: clamp(52px, 8vw, 118px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #111;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.text-link:hover {
+  gap: 25px;
+}
+
+.empty-message {
+  padding: 30px 0;
+  font-size: 13px;
+  color: rgba(17, 17, 17, 0.45);
 }
 
 
@@ -62,8 +102,8 @@ main {
 .site-header {
   position: relative;
   z-index: 100;
-  background: #f5f2ec;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+  background: rgba(247, 245, 239, 0.94);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
 }
 
 .header-inner {
@@ -81,11 +121,10 @@ main {
 }
 
 .header-nav a {
-  position: relative;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 .header-nav a:hover {
@@ -104,80 +143,111 @@ main {
 }
 
 .header-socials a {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  opacity: 0.65;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+  color: rgba(17, 17, 17, 0.6);
 }
 
 .header-socials a:hover {
-  opacity: 1;
-  transform: translateY(-2px);
+  color: #111;
 }
 
 
 /* =========================================================
-   HERO
+   HOME
 ========================================================= */
 
-.home-hero {
-  height: 620px;
-  min-height: 620px;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+.home-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f7f5ef;
+}
+
+
+/* =========================================================
+   HOME BACKGROUND / PARALLAX
+========================================================= */
+
+.home-page-bg {
+  position: absolute;
+  top: -80px;
+  left: 0;
+
+  width: 100%;
+  height: 1500px;
 
   background-image: url('/hero-bg.png');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
+
+  z-index: -1;
+  pointer-events: none;
+
+  will-change: transform;
+  transform: translate3d(0, 0, 0) scale(1.05);
 }
+
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.home-hero {
+  position: relative;
+  height: 580px;
+  background: transparent;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
+}
+
 .home-hero-inner {
   position: relative;
   height: 100%;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  grid-template-rows: 1fr auto;
-  align-items: center;
-  padding-top: 60px;
-  padding-bottom: 54px;
 }
 
-.hero-small-label {
-  align-self: center;
-  font-size: 10px;
+.hero-label {
+  position: absolute;
+  top: 195px;
+  left: 0;
+
+  font-size: 9px;
   font-weight: 600;
   line-height: 1.8;
   letter-spacing: 0.2em;
-  color: rgba(17, 17, 17, 0.55);
+
+  color: rgba(17, 17, 17, 0.5);
 }
 
 .hero-logo-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-right: 130px;
+  position: absolute;
+  top: 43%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
 }
 
 .hero-logo {
-  width: min(560px, 52vw);
+  width: clamp(300px, 27vw, 490px);
   height: auto;
-  object-fit: contain;
 }
 
 .hero-bottom {
-  grid-column: 1 / -1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: 40px;
 }
 
 .hero-message {
   margin: 0;
-  font-size: clamp(18px, 2vw, 31px);
+
+  font-size: clamp(22px, 2vw, 32px);
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.04em;
@@ -186,75 +256,89 @@ main {
 .hero-scroll {
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: 10px;
+  gap: 15px;
+
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.16em;
-  color: rgba(17, 17, 17, 0.55);
+  letter-spacing: 0.18em;
+
+  color: rgba(17, 17, 17, 0.5);
 }
 
 .hero-scroll-arrow {
   font-size: 18px;
-  line-height: 1;
 }
 
 
 /* =========================================================
-   HOME SECTIONS
+   HOME SHARED SECTION
 ========================================================= */
 
-.home-section {
-  padding: 130px 0;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
-}
-
-.home-section-grid {
+.home-feature-row {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 80px;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 55px;
 }
 
-.section-intro {
-  position: relative;
+.home-feature-heading {
+  min-width: 0;
 }
 
-.section-number {
-  margin-bottom: 50px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: rgba(17, 17, 17, 0.45);
+.feature-index {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-bottom: 20px;
+
+  font-size: 9px;
+  letter-spacing: 0.12em;
+
+  color: rgba(17, 17, 17, 0.42);
 }
 
-.section-intro h2 {
-  margin: 0 0 30px;
-  font-size: clamp(36px, 4.6vw, 72px);
+.feature-line {
+  display: block;
+  width: 42px;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.35);
+}
+
+.home-feature-heading h2 {
+  margin: 0 0 15px;
+
+  font-size: clamp(38px, 4vw, 62px);
   font-weight: 700;
   line-height: 0.95;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.055em;
 }
 
-.section-intro p {
-  margin: 0 0 46px;
-  font-size: 14px;
-  line-height: 1.75;
-  color: rgba(17, 17, 17, 0.62);
+.home-feature-heading p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.65;
+
+  color: rgba(17, 17, 17, 0.58);
 }
 
-.text-link {
+.home-view-all {
   display: inline-flex;
   align-items: center;
   gap: 18px;
-  padding-bottom: 7px;
+
+  margin-top: 28px;
+
+  padding-bottom: 6px;
   border-bottom: 1px solid #111;
-  font-size: 10px;
+
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.13em;
-  transition: gap 0.25s ease;
 }
 
-.text-link:hover {
-  gap: 28px;
+.home-view-all:hover {
+  gap: 26px;
 }
 
 
@@ -262,62 +346,54 @@ main {
    HOME ARTISTS
 ========================================================= */
 
-.home-artists-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
+.home-artists-section {
+  position: relative;
+
+  padding: 70px 0 65px;
+
+  background: transparent;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
 }
 
-.home-artist-card {
+.home-artist-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.home-artist-item {
   display: block;
 }
 
-.home-artist-image-wrap {
+.home-artist-thumb {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background: #e8e5df;
+
+  aspect-ratio: 1.38 / 1;
+
+  background: rgba(255, 255, 255, 0.35);
 }
 
-.home-artist-image {
+.home-artist-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition: transform 0.45s ease;
 }
 
-.home-artist-card:hover .home-artist-image {
-  transform: scale(1.025);
+.home-artist-item:hover .home-artist-thumb img {
+  transform: scale(1.035);
 }
 
-.home-artist-info {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding-top: 18px;
-}
+.home-artist-name {
+  margin-top: 11px;
 
-.home-artist-info h3 {
-  margin: 0 0 7px;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
 
-.home-artist-info p {
-  margin: 0;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: rgba(17, 17, 17, 0.48);
   text-transform: uppercase;
-}
-
-.artist-number {
-  padding-top: 2px;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: rgba(17, 17, 17, 0.38);
 }
 
 
@@ -325,315 +401,104 @@ main {
    HOME NEWS
 ========================================================= */
 
-.news-section {
-  background: #f2efe9;
+.home-news-section {
+  position: relative;
+
+  padding: 50px 0 65px;
+
+  background: rgba(247, 245, 239, 0.58);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
 }
 
-.home-news-list {
-  border-top: 1px solid #111;
+.home-news-section .home-feature-row {
+  grid-template-columns: 250px minmax(0, 1fr) 90px;
 }
 
-.home-news-row {
+.home-news-cards {
   display: grid;
-  grid-template-columns: 150px 1fr 30px;
-  align-items: center;
-  gap: 25px;
-  min-height: 94px;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.2);
-  transition:
-    padding-left 0.25s ease,
-    background 0.25s ease;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
 }
 
-.home-news-row:hover {
-  padding-left: 10px;
-  background: rgba(255, 255, 255, 0.28);
+.home-news-card {
+  display: grid;
+  grid-template-columns: 115px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.home-news-thumb {
+  overflow: hidden;
+  aspect-ratio: 1.35 / 1;
+  background: #e9e7e2;
+}
+
+.home-news-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.home-news-card:hover .home-news-thumb img {
+  transform: scale(1.04);
+}
+
+.home-news-info {
+  min-width: 0;
+}
+
+.home-news-category {
+  display: block;
+  margin-bottom: 9px;
+
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+
+  color: rgba(17, 17, 17, 0.42);
+}
+
+.home-news-info h3 {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+
+  word-break: keep-all;
 }
 
 .home-news-date {
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  color: rgba(17, 17, 17, 0.48);
+  display: block;
+  margin-top: 11px;
+
+  font-size: 9px;
+  letter-spacing: 0.04em;
+
+  color: rgba(17, 17, 17, 0.42);
 }
 
-.home-news-title {
-  overflow: hidden;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.025em;
+.home-news-view-all {
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+
   white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.home-news-arrow {
-  justify-self: end;
-  font-size: 18px;
-}
-
-.empty-message {
-  padding: 40px 0;
-  font-size: 13px;
-  color: rgba(17, 17, 17, 0.45);
 }
 
 
 /* =========================================================
-   GENERAL PAGE SUPPORT
-========================================================= */
-
-.section {
-  padding: 100px 0;
-}
-
-.section-line {
-  border-top: 1px solid rgba(17, 17, 17, 0.16);
-}
-
-.display-title {
-  margin: 0;
-  font-size: clamp(52px, 8vw, 120px);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.07em;
-}
-
-.artist-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 48px 28px;
-}
-
-.artist-card img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-.news-list {
-  border-top: 1px solid #111;
-}
-
-.news-item {
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.18);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-  padding: 80px 0 45px;
-  background: #111111;
-  color: #f5f2ec;
-}
-
-.site-footer a {
-  color: inherit;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-  .header-nav {
-    gap: 20px;
-  }
-
-  .home-hero-inner {
-    grid-template-columns: 120px 1fr;
-  }
-
-  .hero-logo-wrap {
-    padding-right: 60px;
-  }
-
-  .home-section-grid {
-    grid-template-columns: 190px 1fr;
-    gap: 45px;
-  }
-
-  .home-artists-grid {
-    gap: 24px;
-  }
-
-  .artist-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 720px) {
-  .site-container {
-    width: calc(100% - 32px);
-  }
-
-  .site-header {
-    position: relative;
-  }
-
-  .header-inner {
-    min-height: 64px;
-    overflow-x: auto;
-    gap: 30px;
-  }
-
-  .header-nav {
-    flex-shrink: 0;
-    gap: 20px;
-  }
-
-  .header-nav a {
-    font-size: 10px;
-  }
-
-  .header-socials {
-    flex-shrink: 0;
-    gap: 13px;
-  }
-
-  .header-socials a {
-    font-size: 9px;
-  }
-
-
-  /* HERO */
-
-  .home-hero {
-  height: 520px;
-  min-height: 520px;
-}
-
-.home-hero-inner {
-  height: 100%;
-  min-height: 0;
-}
-
-  .home-hero-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
-    padding-top: 46px;
-    padding-bottom: 32px;
-  }
-
-  .hero-small-label {
-    align-self: flex-start;
-    font-size: 8px;
-  }
-
-  .hero-logo-wrap {
-    flex: 1;
-    padding: 30px 0;
-  }
-
-  .hero-logo {
-    width: min(84vw, 430px);
-    margin: auto;
-  }
-
-  .hero-bottom {
-    margin-top: 0;
-  }
-
-  .hero-message {
-    font-size: 20px;
-  }
-
-  .hero-scroll span:first-child {
-    display: none;
-  }
-
-
-  /* SECTIONS */
-
-  .home-section {
-    padding: 85px 0;
-  }
-
-  .home-section-grid {
-    display: block;
-  }
-
-  .section-intro {
-    margin-bottom: 48px;
-  }
-
-  .section-number {
-    margin-bottom: 25px;
-  }
-
-  .section-intro h2 {
-    margin-bottom: 18px;
-    font-size: 46px;
-  }
-
-  .section-intro p {
-    margin-bottom: 25px;
-  }
-
-
-  /* ARTISTS */
-
-  .home-artists-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .home-artist-image-wrap {
-    aspect-ratio: 4 / 5;
-  }
-
-
-  /* NEWS */
-
-  .home-news-row {
-    grid-template-columns: 1fr 24px;
-    gap: 12px;
-    min-height: 90px;
-    padding: 18px 0;
-  }
-
-  .home-news-date {
-    grid-column: 1;
-    grid-row: 1;
-    font-size: 9px;
-  }
-
-  .home-news-title {
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 14px;
-    white-space: normal;
-  }
-
-  .home-news-arrow {
-    grid-column: 2;
-    grid-row: 1 / 3;
-  }
-
-
-  /* GENERAL */
-
-  .section {
-    padding: 70px 0;
-  }
-
-  .artist-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================================================
-   ARTIST LIST PAGE
+   ARTIST LIST
 ========================================================= */
 
 .artist-page-head {
@@ -641,18 +506,24 @@ main {
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
+
   margin-bottom: 90px;
 }
 
 .artist-page-copy {
   margin: 0 0 6px;
+
   font-size: 13px;
   line-height: 1.7;
+
   color: rgba(17, 17, 17, 0.55);
+
   text-align: right;
 }
 
-.artist-page-grid {
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 70px 30px;
 }
 
@@ -662,15 +533,19 @@ main {
 
 .artist-card-image-wrap {
   overflow: hidden;
+
   aspect-ratio: 4 / 5;
+
   background: #e8e5df;
 }
 
 .artist-card-image {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition: transform 0.5s ease;
 }
 
 .artist-card:hover .artist-card-image {
@@ -681,11 +556,13 @@ main {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+
   padding-top: 18px;
 }
 
 .artist-card-meta h2 {
   margin: 0;
+
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -693,44 +570,223 @@ main {
 
 .artist-card-korean-name {
   margin: 5px 0 0;
+
   font-size: 12px;
+
   color: rgba(17, 17, 17, 0.5);
 }
 
 .artist-card-type {
   display: block;
+
   margin-top: 9px;
+
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.14em;
+
   color: rgba(17, 17, 17, 0.42);
+
   text-transform: uppercase;
 }
 
 .artist-card-number {
   padding-top: 2px;
+
   font-size: 10px;
   letter-spacing: 0.08em;
+
   color: rgba(17, 17, 17, 0.35);
 }
 
-@media (max-width: 720px) {
-  .artist-page-head {
-    display: block;
-    margin-bottom: 55px;
-  }
 
-  .artist-page-copy {
-    margin-top: 25px;
-    text-align: left;
-  }
-
-  .artist-page-grid {
-    gap: 55px;
-  }
-}
 /* =========================================================
-   NEWS LIST PAGE
+   ARTIST DETAIL
+========================================================= */
+
+.artist-detail {
+  padding: 80px 0 120px;
+}
+
+.artist-detail-top {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(340px, 0.85fr);
+
+  gap: 90px;
+}
+
+.artist-detail-image-wrap {
+  overflow: hidden;
+
+  aspect-ratio: 4 / 5;
+
+  background: #e8e5df;
+}
+
+.artist-detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-detail-info {
+  padding-top: 10px;
+}
+
+.artist-detail-label {
+  margin-bottom: 50px;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+
+  color: rgba(17, 17, 17, 0.42);
+}
+
+.artist-detail-name {
+  margin: 0;
+
+  font-size: clamp(50px, 6vw, 90px);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+}
+
+.artist-detail-korean-name {
+  margin-top: 18px;
+
+  font-size: 16px;
+
+  color: rgba(17, 17, 17, 0.52);
+}
+
+.artist-detail-meta {
+  margin-top: 50px;
+
+  border-top: 1px solid rgba(17, 17, 17, 0.25);
+}
+
+.artist-detail-meta-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+}
+
+.artist-detail-meta-row span {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.artist-detail-meta-row strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.artist-detail-summary {
+  margin: 40px 0 0;
+
+  max-width: 480px;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: rgba(17, 17, 17, 0.68);
+}
+
+.artist-detail-sns {
+  margin-top: 40px;
+}
+
+.artist-detail-content {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+
+  gap: 70px;
+
+  margin-top: 130px;
+  padding-top: 35px;
+
+  border-top: 1px solid #111;
+}
+
+.artist-detail-content-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.artist-detail-body {
+  max-width: 760px;
+}
+
+.artist-detail-description,
+.notion-paragraph {
+  margin: 0 0 24px;
+
+  font-size: 15px;
+  line-height: 1.9;
+
+  color: rgba(17, 17, 17, 0.7);
+
+  white-space: pre-line;
+}
+
+.notion-heading-1 {
+  margin: 55px 0 25px;
+  font-size: 36px;
+}
+
+.notion-heading-2 {
+  margin: 45px 0 20px;
+  font-size: 27px;
+}
+
+.notion-heading-3 {
+  margin: 35px 0 18px;
+  font-size: 20px;
+}
+
+.notion-list-item {
+  display: flex;
+  gap: 15px;
+
+  margin-bottom: 12px;
+}
+
+.notion-list-item p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.notion-quote {
+  margin: 40px 0;
+  padding-left: 25px;
+
+  border-left: 1px solid #111;
+
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+.artist-detail-bottom {
+  margin-top: 100px;
+  padding-top: 30px;
+
+  border-top: 1px solid rgba(17, 17, 17, 0.18);
+}
+
+
+/* =========================================================
+   NEWS LIST
 ========================================================= */
 
 .news-page-head {
@@ -738,14 +794,18 @@ main {
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
+
   margin-bottom: 90px;
 }
 
 .news-page-copy {
   margin: 0 0 6px;
+
   font-size: 13px;
   line-height: 1.7;
+
   color: rgba(17, 17, 17, 0.55);
+
   text-align: right;
 }
 
@@ -758,51 +818,51 @@ main {
   grid-template-columns: 70px 150px 1fr 40px;
   align-items: center;
   gap: 30px;
+
   min-height: 120px;
+
   border-bottom: 1px solid rgba(17, 17, 17, 0.18);
+
   transition:
-    padding-left 0.25s ease,
-    background 0.25s ease;
+    padding-left 0.2s ease,
+    background 0.2s ease;
 }
 
 .news-page-row:hover {
   padding-left: 10px;
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .news-page-index {
   font-size: 9px;
-  letter-spacing: 0.12em;
   color: rgba(17, 17, 17, 0.32);
 }
 
 .news-page-date {
   font-size: 11px;
-  letter-spacing: 0.05em;
   color: rgba(17, 17, 17, 0.48);
-}
-
-.news-page-main {
-  min-width: 0;
 }
 
 .news-page-category {
   display: block;
+
   margin-bottom: 10px;
+
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.13em;
+
   color: rgba(17, 17, 17, 0.4);
-  text-transform: uppercase;
 }
 
 .news-page-main h2 {
   margin: 0;
+
   overflow: hidden;
+
   font-size: 20px;
   font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: -0.025em;
+
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -810,98 +870,148 @@ main {
 .news-page-arrow {
   justify-self: end;
   font-size: 19px;
-  transition: transform 0.25s ease;
 }
 
-.news-page-row:hover .news-page-arrow {
-  transform: translateX(4px);
-}
-
-@media (max-width: 720px) {
-  .news-page-head {
-    display: block;
-    margin-bottom: 55px;
-  }
-
-  .news-page-copy {
-    margin-top: 25px;
-    text-align: left;
-  }
-
-  .news-page-row {
-    grid-template-columns: 45px 1fr 24px;
-    gap: 12px;
-    min-height: 110px;
-    padding: 18px 0;
-  }
-
-  .news-page-index {
-    grid-column: 1;
-    grid-row: 1 / 3;
-    align-self: start;
-    padding-top: 2px;
-  }
-
-  .news-page-date {
-    grid-column: 2;
-    grid-row: 1;
-    font-size: 9px;
-  }
-
-  .news-page-main {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .news-page-category {
-    margin-bottom: 7px;
-    font-size: 8px;
-  }
-
-  .news-page-main h2 {
-    font-size: 15px;
-    white-space: normal;
-  }
-
-  .news-page-arrow {
-    grid-column: 3;
-    grid-row: 1 / 3;
-    align-self: center;
-  }
-}
 
 /* =========================================================
-   COMPANY ABOUT
+   NEWS DETAIL
 ========================================================= */
 
-.company-page-head {
+.news-detail {
+  padding: 90px 0 120px;
+}
+
+.news-detail-head {
+  max-width: 1080px;
+
+  margin: 0 auto;
+  padding-bottom: 65px;
+}
+
+.news-detail-meta {
+  display: flex;
+  gap: 22px;
+
+  margin-bottom: 30px;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+
+  color: rgba(17, 17, 17, 0.42);
+}
+
+.news-detail-title {
+  margin: 0;
+
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.news-detail-media {
+  max-width: 1180px;
+
+  margin: 0 auto 90px;
+
+  overflow: hidden;
+}
+
+.news-detail-media img {
+  width: 100%;
+  max-height: 760px;
+
+  object-fit: cover;
+}
+
+.news-detail-content {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 760px);
+
+  justify-content: center;
+
+  gap: 75px;
+
+  padding-top: 35px;
+
+  border-top: 1px solid #111;
+}
+
+.news-detail-content-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.news-detail-body .notion-paragraph {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.notion-image {
+  margin: 45px 0;
+}
+
+.notion-image img {
+  width: 100%;
+}
+
+.news-detail-bottom {
+  max-width: 1040px;
+
+  margin: 100px auto 0;
+  padding-top: 30px;
+
+  border-top: 1px solid rgba(17, 17, 17, 0.18);
+}
+
+
+/* =========================================================
+   COMPANY
+========================================================= */
+
+.company-page-head,
+.business-page-head,
+.contact-page-head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
-  margin-bottom: 110px;
+
+  margin-bottom: 100px;
 }
 
-.company-page-copy {
+.company-page-copy,
+.business-page-copy,
+.contact-page-copy {
   margin: 0 0 6px;
+
   font-size: 13px;
   line-height: 1.7;
+
   color: rgba(17, 17, 17, 0.55);
+
   text-align: right;
 }
 
-.company-about-grid {
+.company-about-grid,
+.contact-grid {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 80px;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 75px;
+
   padding-top: 35px;
+
   border-top: 1px solid #111;
 }
 
-.company-about-label {
+.company-about-label,
+.contact-label {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.14em;
+
   color: rgba(17, 17, 17, 0.45);
 }
 
@@ -911,38 +1021,44 @@ main {
 
 .company-about-content h2 {
   margin: 0;
-  font-size: clamp(34px, 4vw, 60px);
+
+  font-size: clamp(32px, 4vw, 58px);
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.05em;
-  word-break: keep-all;
 }
 
 .company-about-text {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 50px;
-  margin-top: 70px;
+
+  margin-top: 65px;
 }
 
 .company-about-text p {
   margin: 0;
+
   font-size: 14px;
   line-height: 1.9;
+
   color: rgba(17, 17, 17, 0.62);
-  word-break: keep-all;
 }
 
 .company-values {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 140px;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: 125px;
+
   border-top: 1px solid rgba(17, 17, 17, 0.25);
 }
 
 .company-value-item {
-  min-height: 300px;
+  min-height: 280px;
+
   padding: 30px 35px 40px 0;
+
   border-right: 1px solid rgba(17, 17, 17, 0.18);
 }
 
@@ -956,93 +1072,35 @@ main {
 
 .company-value-item span {
   display: block;
-  margin-bottom: 65px;
+
+  margin-bottom: 60px;
+
   font-size: 9px;
-  letter-spacing: 0.12em;
+
   color: rgba(17, 17, 17, 0.35);
 }
 
 .company-value-item h3 {
   margin: 0 0 20px;
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: -0.045em;
+
+  font-size: 32px;
 }
 
 .company-value-item p {
   max-width: 220px;
+
   margin: 0;
+
   font-size: 13px;
   line-height: 1.8;
+
   color: rgba(17, 17, 17, 0.55);
-  word-break: keep-all;
 }
 
-@media (max-width: 720px) {
-  .company-page-head {
-    display: block;
-    margin-bottom: 65px;
-  }
 
-  .company-page-copy {
-    margin-top: 25px;
-    text-align: left;
-  }
-
-  .company-about-grid {
-    display: block;
-  }
-
-  .company-about-label {
-    margin-bottom: 40px;
-  }
-
-  .company-about-content h2 {
-    font-size: 34px;
-  }
-
-  .company-about-text {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    margin-top: 45px;
-  }
-
-  .company-values {
-    grid-template-columns: 1fr;
-    margin-top: 90px;
-  }
-
-  .company-value-item,
-  .company-value-item:not(:first-child) {
-    min-height: auto;
-    padding: 28px 0 40px;
-    border-right: 0;
-    border-bottom: 1px solid rgba(17, 17, 17, 0.18);
-  }
-
-  .company-value-item span {
-    margin-bottom: 35px;
-  }
-}
 /* =========================================================
-   BUSINESS PAGE
+   BUSINESS
 ========================================================= */
-
-.business-page-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 110px;
-}
-
-.business-page-copy {
-  margin: 0 0 6px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(17, 17, 17, 0.55);
-  text-align: right;
-}
 
 .business-list {
   border-top: 1px solid #111;
@@ -1050,24 +1108,25 @@ main {
 
 .business-item {
   display: grid;
-  grid-template-columns: 90px 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 45px;
+
   padding: 45px 0 55px;
+
   border-bottom: 1px solid rgba(17, 17, 17, 0.18);
 }
 
 .business-item-number {
-  padding-top: 6px;
   font-size: 9px;
-  letter-spacing: 0.12em;
+
   color: rgba(17, 17, 17, 0.35);
 }
 
 .business-item-title h2 {
   margin: 0;
-  font-size: clamp(34px, 4vw, 58px);
-  font-weight: 600;
-  line-height: 1;
+
+  font-size: clamp(34px, 4vw, 56px);
+
   letter-spacing: -0.055em;
 }
 
@@ -1077,164 +1136,532 @@ main {
 
 .business-item-content h3 {
   margin: 0 0 18px;
+
   font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
 }
 
 .business-item-content p {
   margin: 0;
+
   font-size: 14px;
   line-height: 1.9;
+
   color: rgba(17, 17, 17, 0.6);
-  word-break: keep-all;
 }
 
-
-/* MOBILE */
-
-@media (max-width: 720px) {
-  .business-page-head {
-    display: block;
-    margin-bottom: 65px;
-  }
-
-  .business-page-copy {
-    margin-top: 25px;
-    text-align: left;
-  }
-
-  .business-item {
-    grid-template-columns: 45px 1fr;
-    gap: 20px;
-    padding: 35px 0 45px;
-  }
-
-  .business-item-title {
-    grid-column: 2;
-  }
-
-  .business-item-content {
-    grid-column: 2;
-  }
-
-  .business-item-title h2 {
-    font-size: 38px;
-  }
-}
 
 /* =========================================================
-   CONTACT PAGE
+   CONTACT
 ========================================================= */
-
-.contact-page-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 110px;
-}
-
-.contact-page-copy {
-  margin: 0 0 6px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(17, 17, 17, 0.55);
-  text-align: right;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 80px;
-  padding-top: 35px;
-  border-top: 1px solid #111;
-}
-
-.contact-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: rgba(17, 17, 17, 0.45);
-}
 
 .contact-content {
   max-width: 900px;
 }
 
 .contact-block {
-  padding: 0 0 55px;
-  margin-bottom: 55px;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.18);
-}
+  margin-bottom: 50px;
+  padding-bottom: 50px;
 
-.contact-block:last-child {
-  margin-bottom: 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.18);
 }
 
 .contact-block-label {
   display: block;
-  margin-bottom: 22px;
+
+  margin-bottom: 20px;
+
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.14em;
+
   color: rgba(17, 17, 17, 0.4);
 }
 
 .contact-main-link {
   display: inline-block;
-  font-size: clamp(28px, 4vw, 56px);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.045em;
-  word-break: break-all;
-  transition: opacity 0.25s ease;
-}
 
-.contact-main-link:hover {
-  opacity: 0.45;
+  font-size: clamp(27px, 4vw, 54px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
 }
 
 .contact-block p {
   margin: 0;
+
   font-size: 16px;
   line-height: 1.8;
-  letter-spacing: -0.02em;
+
   color: rgba(17, 17, 17, 0.65);
 }
 
 
-/* MOBILE */
+/* =========================================================
+   FOOTER
+========================================================= */
 
-@media (max-width: 720px) {
-  .contact-page-head {
-    display: block;
-    margin-bottom: 65px;
+.site-footer {
+  padding: 75px 0 40px;
+
+  background: #111;
+  color: #f7f5ef;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+}
+
+.footer-title {
+  font-size: clamp(28px, 4vw, 54px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.footer-subtitle {
+  margin: 22px 0 0;
+
+  font-size: 11px;
+
+  color: rgba(247, 245, 239, 0.65);
+}
+
+.footer-company {
+  margin: 8px 0 0;
+
+  font-size: 9px;
+
+  color: rgba(247, 245, 239, 0.4);
+}
+
+.footer-nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-nav a,
+.footer-socials a {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+
+  color: rgba(247, 245, 239, 0.72);
+}
+
+.footer-socials {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-bottom {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 65px;
+  padding-top: 22px;
+
+  border-top: 1px solid rgba(247, 245, 239, 0.2);
+
+  font-size: 9px;
+
+  color: rgba(247, 245, 239, 0.4);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .home-feature-row {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 35px;
   }
 
-  .contact-page-copy {
+  .home-artist-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-news-section .home-feature-row {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  .home-news-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .home-news-view-all {
+    grid-column: 2;
+
+    justify-content: flex-start;
+
     margin-top: 25px;
+  }
+
+  .artist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+
+  .site-container {
+    width: calc(100% - 32px);
+  }
+
+
+  /* HEADER */
+
+  .header-inner {
+    min-height: 62px;
+    gap: 25px;
+
+    overflow-x: auto;
+  }
+
+  .header-nav {
+    flex-shrink: 0;
+    gap: 18px;
+  }
+
+  .header-nav a {
+    font-size: 9px;
+  }
+
+  .header-socials {
+    flex-shrink: 0;
+    gap: 12px;
+  }
+
+  .header-socials a {
+    font-size: 8px;
+  }
+
+
+  /* HOME BACKGROUND */
+
+  .home-page-bg {
+    top: -30px;
+
+    height: 1150px;
+
+    background-position: 60% top;
+
+    transform: translate3d(0, 0, 0) scale(1.08);
+  }
+
+
+  /* HERO */
+
+  .home-hero {
+    height: 500px;
+  }
+
+  .hero-label {
+    top: 45px;
+
+    font-size: 8px;
+  }
+
+  .hero-logo-wrap {
+    top: 42%;
+  }
+
+  .hero-logo {
+    width: min(78vw, 350px);
+  }
+
+  .hero-bottom {
+    bottom: 28px;
+  }
+
+  .hero-message {
+    font-size: 19px;
+  }
+
+  .hero-scroll span:first-child {
+    display: none;
+  }
+
+
+  /* HOME */
+
+  .home-feature-row,
+  .home-news-section .home-feature-row {
+    display: block;
+  }
+
+  .home-feature-heading {
+    margin-bottom: 38px;
+  }
+
+  .home-feature-heading h2 {
+    font-size: 42px;
+  }
+
+  .home-artists-section {
+    padding: 55px 0;
+  }
+
+  .home-artist-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 12px;
+  }
+
+  .home-artist-thumb {
+    aspect-ratio: 3 / 4;
+  }
+
+  .home-news-section {
+    padding: 55px 0;
+  }
+
+  .home-news-cards {
+    display: block;
+  }
+
+  .home-news-card {
+    grid-template-columns: 95px 1fr;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+  }
+
+  .home-news-view-all {
+    margin-top: 30px;
+  }
+
+
+  /* GENERAL PAGE */
+
+  .section {
+    padding: 65px 0 80px;
+  }
+
+  .display-title {
+    font-size: 54px;
+  }
+
+
+  /* ARTIST */
+
+  .artist-page-head,
+  .news-page-head,
+  .company-page-head,
+  .business-page-head,
+  .contact-page-head {
+    display: block;
+
+    margin-bottom: 55px;
+  }
+
+  .artist-page-copy,
+  .news-page-copy,
+  .company-page-copy,
+  .business-page-copy,
+  .contact-page-copy {
+    margin-top: 22px;
+
     text-align: left;
   }
 
+  .artist-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .artist-detail {
+    padding: 35px 0 75px;
+  }
+
+  .artist-detail-top {
+    display: block;
+  }
+
+  .artist-detail-info {
+    padding-top: 40px;
+  }
+
+  .artist-detail-label {
+    margin-bottom: 25px;
+  }
+
+  .artist-detail-name {
+    font-size: 50px;
+  }
+
+  .artist-detail-content {
+    display: block;
+
+    margin-top: 80px;
+  }
+
+  .artist-detail-content-title {
+    margin-bottom: 35px;
+  }
+
+
+  /* NEWS */
+
+  .news-page-row {
+    grid-template-columns: 40px 1fr 24px;
+    gap: 12px;
+
+    min-height: 105px;
+
+    padding: 16px 0;
+  }
+
+  .news-page-index {
+    grid-row: 1 / 3;
+  }
+
+  .news-page-date {
+    grid-column: 2;
+  }
+
+  .news-page-main {
+    grid-column: 2;
+  }
+
+  .news-page-main h2 {
+    font-size: 15px;
+
+    white-space: normal;
+  }
+
+  .news-page-arrow {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  .news-detail {
+    padding: 50px 0 75px;
+  }
+
+  .news-detail-title {
+    font-size: 38px;
+  }
+
+  .news-detail-media {
+    margin-bottom: 60px;
+  }
+
+  .news-detail-content {
+    display: block;
+  }
+
+  .news-detail-content-label {
+    margin-bottom: 35px;
+  }
+
+
+  /* COMPANY */
+
+  .company-about-grid,
   .contact-grid {
     display: block;
   }
 
+  .company-about-label,
   .contact-label {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
   }
 
-  .contact-block {
-    padding-bottom: 40px;
-    margin-bottom: 40px;
+  .company-about-content h2 {
+    font-size: 32px;
   }
+
+  .company-about-text {
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    margin-top: 40px;
+  }
+
+  .company-values {
+    grid-template-columns: 1fr;
+
+    margin-top: 80px;
+  }
+
+  .company-value-item,
+  .company-value-item:not(:first-child) {
+    min-height: 0;
+
+    padding: 28px 0 38px;
+
+    border-right: 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.18);
+  }
+
+  .company-value-item span {
+    margin-bottom: 30px;
+  }
+
+
+  /* BUSINESS */
+
+  .business-item {
+    grid-template-columns: 40px 1fr;
+    gap: 18px;
+
+    padding: 32px 0 40px;
+  }
+
+  .business-item-title,
+  .business-item-content {
+    grid-column: 2;
+  }
+
+  .business-item-title h2 {
+    font-size: 36px;
+  }
+
+
+  /* CONTACT */
 
   .contact-main-link {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .contact-block p {
     font-size: 14px;
+  }
+
+
+  /* FOOTER */
+
+  .footer-inner {
+    display: block;
+  }
+
+  .footer-nav-wrap {
+    margin-top: 45px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 45px;
   }
 }
