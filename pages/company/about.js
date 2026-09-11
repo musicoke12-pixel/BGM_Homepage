@@ -34,8 +34,8 @@ export default function AboutPage() {
 
               <div className="company-about-text">
                 <p>
-                  BGM Creative Studio는 아티스트와 음악의 가능성을 발견하고,
-                  그 가치를 다양한 콘텐츠로 확장해 나가는 크리에이티브 스튜디오입니다.
+                  BGM Entertainment는 아티스트와 음악의 가능성을 발견하고,
+                  그 가치를 다양한 콘텐츠로 확장해 나가는 기업입니다.
                 </p>
 
                 <p>
