@@ -730,3 +730,143 @@ main {
     gap: 55px;
   }
 }
+/* =========================================================
+   NEWS LIST PAGE
+========================================================= */
+
+.news-page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 90px;
+}
+
+.news-page-copy {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(17, 17, 17, 0.55);
+  text-align: right;
+}
+
+.news-page-list {
+  border-top: 1px solid #111;
+}
+
+.news-page-row {
+  display: grid;
+  grid-template-columns: 70px 150px 1fr 40px;
+  align-items: center;
+  gap: 30px;
+  min-height: 120px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.18);
+  transition:
+    padding-left 0.25s ease,
+    background 0.25s ease;
+}
+
+.news-page-row:hover {
+  padding-left: 10px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.news-page-index {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(17, 17, 17, 0.32);
+}
+
+.news-page-date {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(17, 17, 17, 0.48);
+}
+
+.news-page-main {
+  min-width: 0;
+}
+
+.news-page-category {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  color: rgba(17, 17, 17, 0.4);
+  text-transform: uppercase;
+}
+
+.news-page-main h2 {
+  margin: 0;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.news-page-arrow {
+  justify-self: end;
+  font-size: 19px;
+  transition: transform 0.25s ease;
+}
+
+.news-page-row:hover .news-page-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 720px) {
+  .news-page-head {
+    display: block;
+    margin-bottom: 55px;
+  }
+
+  .news-page-copy {
+    margin-top: 25px;
+    text-align: left;
+  }
+
+  .news-page-row {
+    grid-template-columns: 45px 1fr 24px;
+    gap: 12px;
+    min-height: 110px;
+    padding: 18px 0;
+  }
+
+  .news-page-index {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-self: start;
+    padding-top: 2px;
+  }
+
+  .news-page-date {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 9px;
+  }
+
+  .news-page-main {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .news-page-category {
+    margin-bottom: 7px;
+    font-size: 8px;
+  }
+
+  .news-page-main h2 {
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  .news-page-arrow {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+}
