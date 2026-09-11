@@ -1,12 +1,60 @@
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { getArtists, getNews } from '../lib/notion';
 
 export default function Home({ artists, news }) {
+  const bgRef = useRef(null);
+
   const featuredArtists = artists?.slice(0, 4) || [];
   const latestNews = news?.slice(0, 3) || [];
 
+  useEffect(() => {
+    let ticking = false;
+
+    const updateBackground = () => {
+      if (!bgRef.current) return;
+
+      const scrollY = window.scrollY;
+
+      // 실제 스크롤 거리의 약 12%만 이동
+      const moveY = scrollY * 0.12;
+
+      bgRef.current.style.transform =
+        `translate3d(0, ${moveY}px, 0) scale(1.05)`;
+
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateBackground);
+        ticking = true;
+      }
+    };
+
+    updateBackground();
+
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <main className="home-page">
+
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+      <div
+        ref={bgRef}
+        className="home-page-bg"
+        aria-hidden="true"
+      />
+
 
       {/* =====================================================
           HERO
@@ -82,6 +130,7 @@ export default function Home({ artists, news }) {
 
 
           <div className="home-artist-list">
+
             {featuredArtists.map((artist) => (
               <Link
                 href={`/artist/${artist.id}`}
@@ -106,6 +155,7 @@ export default function Home({ artists, news }) {
                 등록된 아티스트가 없습니다.
               </div>
             )}
+
           </div>
 
         </div>
@@ -116,6 +166,7 @@ export default function Home({ artists, news }) {
           NEWS
       ====================================================== */}
       <section className="home-news-section">
+
         <div className="site-container home-feature-row">
 
           <div className="home-feature-heading">
@@ -155,15 +206,19 @@ export default function Home({ artists, news }) {
                 )}
 
                 <div className="home-news-info">
+
                   <span className="home-news-category">
                     {item.category || 'NEWS'}
                   </span>
 
-                  <h3>{item.title}</h3>
+                  <h3>
+                    {item.title}
+                  </h3>
 
                   <span className="home-news-date">
                     {formatDate(item.date)}
                   </span>
+
                 </div>
 
               </Link>
