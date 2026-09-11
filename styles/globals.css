@@ -632,3 +632,101 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   ARTIST LIST PAGE
+========================================================= */
+
+.artist-page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 90px;
+}
+
+.artist-page-copy {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(17, 17, 17, 0.55);
+  text-align: right;
+}
+
+.artist-page-grid {
+  gap: 70px 30px;
+}
+
+.artist-card {
+  display: block;
+}
+
+.artist-card-image-wrap {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #e8e5df;
+}
+
+.artist-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.artist-card:hover .artist-card-image {
+  transform: scale(1.025);
+}
+
+.artist-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 18px;
+}
+
+.artist-card-meta h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.artist-card-korean-name {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: rgba(17, 17, 17, 0.5);
+}
+
+.artist-card-type {
+  display: block;
+  margin-top: 9px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(17, 17, 17, 0.42);
+  text-transform: uppercase;
+}
+
+.artist-card-number {
+  padding-top: 2px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(17, 17, 17, 0.35);
+}
+
+@media (max-width: 720px) {
+  .artist-page-head {
+    display: block;
+    margin-bottom: 55px;
+  }
+
+  .artist-page-copy {
+    margin-top: 25px;
+    text-align: left;
+  }
+
+  .artist-page-grid {
+    gap: 55px;
+  }
+}
