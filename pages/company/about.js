@@ -1,162 +1,87 @@
-import Link from 'next/link';
-
-export default function About() {
+export default function AboutPage() {
   return (
-    <>
-      <section className="page-header">
+    <main>
+      <section className="section">
         <div className="site-container">
-          <div className="hero-subtitle">
-            BOX GLOBAL MEDIA
-          </div>
 
-          <h1 className="page-title">
-            ABOUT
-          </h1>
-        </div>
-      </section>
-
-      <section className="section section-line">
-        <div className="site-container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '80px',
-              alignItems: 'start',
-            }}
-          >
+          <div className="company-page-head">
             <div>
-              <div className="hero-subtitle">
-                WHO WE ARE
-              </div>
+              <span className="section-number">03</span>
+              <h1 className="display-title">COMPANY</h1>
             </div>
 
-            <div>
-              <h2 className="large-copy">
-                WE CREATE
+            <p className="company-page-copy">
+              음악과 아티스트,
+              <br />
+              그리고 콘텐츠를 만듭니다.
+            </p>
+          </div>
+
+
+          <div className="company-about-grid">
+
+            <div className="company-about-label">
+              ABOUT
+            </div>
+
+            <div className="company-about-content">
+
+              <h2>
+                BGM Creative Studio는
                 <br />
-                MUSIC,
-                <br />
-                ARTISTS
-                <br />
-                <span className="bgm-accent">
-                  AND CONTENT.
-                </span>
+                음악을 중심으로 새로운 콘텐츠를 만듭니다.
               </h2>
 
-              <p
-                className="body-copy"
-                style={{
-                  marginTop: '50px',
-                  maxWidth: '620px',
-                }}
-              >
-                BOX GLOBAL MEDIA는 아티스트와 음악,
-                콘텐츠를 통해 새로운 가치를 만들어가는
-                엔터테인먼트 회사입니다.
+              <div className="company-about-text">
+                <p>
+                  BGM Creative Studio는 아티스트와 음악의 가능성을 발견하고,
+                  그 가치를 다양한 콘텐츠로 확장해 나가는 크리에이티브 스튜디오입니다.
+                </p>
+
+                <p>
+                  음악 제작, 아티스트 매니지먼트, 영상 콘텐츠 등
+                  다양한 분야를 연결하며 오래 기억될 수 있는 콘텐츠를 만들어갑니다.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div className="company-values">
+
+            <div className="company-value-item">
+              <span>01</span>
+              <h3>MUSIC</h3>
+              <p>
+                좋은 음악이 가진 힘과
+                가능성을 중요하게 생각합니다.
               </p>
+            </div>
 
-              <p
-                className="body-copy"
-                style={{
-                  marginTop: '20px',
-                  maxWidth: '620px',
-                }}
-              >
-                아티스트의 개성과 가능성을 발견하고,
-                음악과 다양한 미디어 콘텐츠를 통해
-                더 많은 사람들과 연결되는 것을 목표로 합니다.
+            <div className="company-value-item">
+              <span>02</span>
+              <h3>ARTIST</h3>
+              <p>
+                아티스트의 개성과 방향을
+                함께 고민하고 성장합니다.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section
-        className="section section-line"
-        style={{
-          background: '#111',
-          color: '#fff',
-        }}
-      >
-        <div className="site-container">
-          <div className="hero-subtitle">
-            OUR VISION
-          </div>
-
-          <div
-            className="large-copy"
-            style={{
-              marginTop: '45px',
-              maxWidth: '1100px',
-            }}
-          >
-            CONNECTING
-            <br />
-            ARTISTS AND
-            <br />
-            AUDIENCES
-            <br />
-            <span className="bgm-accent">
-              BEYOND BORDERS.
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-line">
-        <div className="site-container">
-          <div className="section-header">
-            <h2 className="section-title">
-              WHAT WE DO
-            </h2>
-          </div>
-
-          <div className="news-list">
-            <div className="news-item">
-              <div className="news-date">01</div>
-              <div className="news-category">
-                MUSIC
-              </div>
-              <div className="news-title">
-                Music Production &amp; Distribution
-              </div>
-              <div className="news-arrow">→</div>
+            <div className="company-value-item">
+              <span>03</span>
+              <h3>CONTENT</h3>
+              <p>
+                음악을 넘어 다양한 방식으로
+                새로운 이야기를 만듭니다.
+              </p>
             </div>
 
-            <div className="news-item">
-              <div className="news-date">02</div>
-              <div className="news-category">
-                ARTIST
-              </div>
-              <div className="news-title">
-                Artist Management &amp; Development
-              </div>
-              <div className="news-arrow">→</div>
-            </div>
-
-            <div className="news-item">
-              <div className="news-date">03</div>
-              <div className="news-category">
-                CONTENT
-              </div>
-              <div className="news-title">
-                Media &amp; Entertainment Content
-              </div>
-              <div className="news-arrow">→</div>
-            </div>
           </div>
 
-          <div style={{ marginTop: '70px' }}>
-            <Link
-              href="/company/business"
-              className="section-link"
-            >
-              VIEW OUR BUSINESS →
-            </Link>
-          </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
