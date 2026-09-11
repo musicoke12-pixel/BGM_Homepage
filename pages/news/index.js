@@ -3,57 +3,68 @@ import { getNews } from '../../lib/notion';
 
 export default function NewsPage({ news }) {
   return (
-    <>
-      <section className="page-header">
+    <main>
+      <section className="section">
         <div className="site-container">
-          <div className="hero-subtitle">
-            BOX GLOBAL MEDIA
+
+          <div className="news-page-head">
+            <div>
+              <span className="section-number">02</span>
+              <h1 className="display-title">NEWS</h1>
+            </div>
+
+            <p className="news-page-copy">
+              BGM Creative Studio의
+              <br />
+              새로운 소식을 전합니다.
+            </p>
           </div>
 
-          <h1 className="page-title">
-            NEWS
-          </h1>
-        </div>
-      </section>
 
-      <section className="section section-line">
-        <div className="site-container">
-          {news?.length > 0 ? (
-            <div className="news-list">
-              {news.map((item) => (
-                <Link
-                  href={`/news/${item.id}`}
-                  className="news-item"
-                  key={item.id}
-                >
-                  <div className="news-date">
-                    {formatDate(item.date)}
-                  </div>
+          <div className="news-page-list">
+            {news.map((item, index) => (
+              <Link
+                href={`/news/${item.id}`}
+                key={item.id}
+                className="news-page-row"
+              >
+                <div className="news-page-index">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
 
-                  <div className="news-category">
-                    {item.category}
-                  </div>
+                <div className="news-page-date">
+                  {formatDate(item.date)}
+                </div>
 
-                  <div className="news-title">
+                <div className="news-page-main">
+                  <span className="news-page-category">
+                    {item.category || 'NEWS'}
+                  </span>
+
+                  <h2>
                     {item.title}
-                  </div>
+                  </h2>
+                </div>
 
-                  <div className="news-arrow">
-                    →
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <p className="body-copy">
-              News will be updated soon.
-            </p>
-          )}
+                <div className="news-page-arrow">
+                  →
+                </div>
+              </Link>
+            ))}
+
+            {news.length === 0 && (
+              <div className="empty-message">
+                등록된 소식이 없습니다.
+              </div>
+            )}
+          </div>
+
         </div>
       </section>
-    </>
+    </main>
   );
 }
+
 
 function formatDate(date) {
   if (!date) return '';
@@ -61,20 +72,23 @@ function formatDate(date) {
   const d = new Date(date);
 
   if (Number.isNaN(d.getTime())) {
-    return '';
+    return date;
   }
 
-  return d
-    .toLocaleDateString('en-CA')
-    .replaceAll('-', '.');
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+
+  return `${year}.${month}.${day}`;
 }
+
 
 export async function getStaticProps() {
   const news = await getNews();
 
   return {
     props: {
-      news: news || [],
+      news,
     },
 
     revalidate: 60,
