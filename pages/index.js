@@ -2,144 +2,176 @@ import Link from 'next/link';
 import { getArtists, getNews } from '../lib/notion';
 
 export default function Home({ artists, news }) {
+  const featuredArtists = artists?.slice(0, 2) || [];
+  const latestNews = news?.slice(0, 3) || [];
+
   return (
     <>
-      {/* HERO */}
-      <section className="hero">
-        <div className="site-container hero-inner">
-          <div className="hero-subtitle">
-            BOX GLOBAL MEDIA
-          </div>
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+      <main>
+        <section className="home-hero">
+          <div className="site-container home-hero-inner">
 
-          <h1 className="display-title">
-            BOX<br />
-            GLOBAL<br />
-            <span className="bgm-accent">MEDIA</span>
-          </h1>
-
-          <div className="hero-bottom">
-            <p className="hero-description">
-              We create music, artists and content
-              that connect with audiences around the world.
-            </p>
-
-            <div className="hero-subtitle">
-              MUSIC · ARTIST · CONTENT
+            <div className="hero-small-label">
+              MUSIC
+              <br />
+              ARTIST
+              <br />
+              CONTENT
             </div>
+
+            <div className="hero-logo-wrap">
+              <img
+                src="/bgm-logo.png"
+                alt="BGM Creative Studio"
+                className="hero-logo"
+              />
+            </div>
+
+            <div className="hero-bottom">
+              <p className="hero-message">
+                좋은 음악이,
+                <br />
+                더 나은 내일을 만듭니다.
+              </p>
+
+              <div className="hero-scroll">
+                <span>SCROLL</span>
+                <span className="hero-scroll-arrow">↓</span>
+              </div>
+            </div>
+
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ARTISTS */}
-      <section className="section section-line">
-        <div className="site-container">
-          <div className="section-header">
-            <h2 className="section-title">ARTISTS</h2>
 
-            <Link href="/artist" className="section-link">
-              VIEW ALL →
-            </Link>
-          </div>
+        {/* =====================================================
+            ARTISTS
+        ====================================================== */}
+        <section className="home-section artists-section">
+          <div className="site-container home-section-grid">
 
-          {artists?.length > 0 ? (
-            <div className="artist-grid">
-              {artists.slice(0, 6).map((artist) => (
+            <div className="section-intro">
+              <div className="section-number">01</div>
+
+              <h2>ARTISTS</h2>
+
+              <p>
+                음악으로,
+                <br />
+                사람과 세상을 연결합니다.
+              </p>
+
+              <Link href="/artist" className="text-link">
+                VIEW ALL
+                <span>→</span>
+              </Link>
+            </div>
+
+
+            <div className="home-artists-grid">
+              {featuredArtists.map((artist, index) => (
                 <Link
                   href={`/artist/${artist.id}`}
-                  className="artist-card"
                   key={artist.id}
+                  className="home-artist-card"
                 >
-                  <div className="artist-image-wrap">
-                    {artist.thumbnail && (
-                      <img
-                        src={artist.thumbnail}
-                        alt={artist.name}
-                      />
-                    )}
+                  <div className="home-artist-image-wrap">
+                    <img
+                      src={artist.thumbnail}
+                      alt={artist.name}
+                      className="home-artist-image"
+                    />
                   </div>
 
-                  <div className="artist-card-info">
-                    <div className="artist-name">
-                      {artist.name}
+                  <div className="home-artist-info">
+                    <div>
+                      <h3>{artist.englishName || artist.name}</h3>
+
+                      <p>
+                        {artist.type || 'ARTIST'}
+                      </p>
                     </div>
 
-                    <div className="artist-type">
-                      {artist.englishName || artist.type}
-                    </div>
+                    <span className="artist-number">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
                 </Link>
               ))}
+
+              {featuredArtists.length === 0 && (
+                <div className="empty-message">
+                  등록된 아티스트가 없습니다.
+                </div>
+              )}
             </div>
-          ) : (
-            <p className="body-copy">
-              Artist information will be updated soon.
-            </p>
-          )}
-        </div>
-      </section>
 
-      {/* NEWS */}
-      <section className="section section-line">
-        <div className="site-container">
-          <div className="section-header">
-            <h2 className="section-title">LATEST NEWS</h2>
-
-            <Link href="/news" className="section-link">
-              VIEW ALL →
-            </Link>
           </div>
+        </section>
 
-          {news?.length > 0 ? (
-            <div className="news-list">
-              {news.slice(0, 5).map((item) => (
+
+        {/* =====================================================
+            NEWS
+        ====================================================== */}
+        <section className="home-section news-section">
+          <div className="site-container home-section-grid">
+
+            <div className="section-intro">
+              <div className="section-number">02</div>
+
+              <h2>NEWS</h2>
+
+              <p>
+                BGM의 새로운 소식을
+                <br />
+                가장 먼저 만나보세요.
+              </p>
+
+              <Link href="/news" className="text-link">
+                VIEW ALL
+                <span>→</span>
+              </Link>
+            </div>
+
+
+            <div className="home-news-list">
+              {latestNews.map((item) => (
                 <Link
                   href={`/news/${item.id}`}
-                  className="news-item"
                   key={item.id}
+                  className="home-news-row"
                 >
-                  <div className="news-date">
+                  <span className="home-news-date">
                     {formatDate(item.date)}
-                  </div>
+                  </span>
 
-                  <div className="news-category">
-                    {item.category}
-                  </div>
-
-                  <div className="news-title">
+                  <span className="home-news-title">
                     {item.title}
-                  </div>
+                  </span>
 
-                  <div className="news-arrow">
+                  <span className="home-news-arrow">
                     →
-                  </div>
+                  </span>
                 </Link>
               ))}
+
+              {latestNews.length === 0 && (
+                <div className="empty-message">
+                  등록된 소식이 없습니다.
+                </div>
+              )}
             </div>
-          ) : (
-            <p className="body-copy">
-              News will be updated soon.
-            </p>
-          )}
-        </div>
-      </section>
 
-      {/* COMPANY */}
-      <section className="section section-line">
-        <div className="site-container company-statement">
-          <div className="large-copy">
-            WE CREATE<br />
-            MUSIC, ARTISTS<br />
-            <span className="bgm-accent">AND STORIES.</span>
           </div>
-
-          <div className="company-statement-small">
-            BOX GLOBAL MEDIA
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   );
 }
+
 
 function formatDate(date) {
   if (!date) return '';
@@ -147,13 +179,16 @@ function formatDate(date) {
   const d = new Date(date);
 
   if (Number.isNaN(d.getTime())) {
-    return '';
+    return date;
   }
 
-  return d
-    .toLocaleDateString('en-CA')
-    .replaceAll('-', '.');
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+
+  return `${year}.${month}.${day}`;
 }
+
 
 export async function getStaticProps() {
   const [artists, news] = await Promise.all([
@@ -163,8 +198,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      artists: artists || [],
-      news: news || [],
+      artists,
+      news,
     },
 
     revalidate: 60,
