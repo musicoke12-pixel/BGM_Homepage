@@ -12,39 +12,39 @@ export default function Home({ artists, news }) {
       ====================================================== */}
       <main>
         <section className="home-hero">
-          <div className="site-container home-hero-inner">
+  <div className="site-container home-hero-inner">
 
-            <div className="hero-small-label">
-              MUSIC
-              <br />
-              ARTIST
-              <br />
-              CONTENT
-            </div>
+    <div className="hero-small-label">
+      MUSIC
+      <br />
+      ARTIST
+      <br />
+      CONTENT
+    </div>
 
-            <div className="hero-logo-wrap">
-              <img
-                src="/bgm-logo.png"
-                alt="BGM Creative Studio"
-                className="hero-logo"
-              />
-            </div>
+    <div className="hero-logo-wrap">
+      <img
+        src="/bgm-logo.png"
+        alt="BGM Creative Studio"
+        className="hero-logo"
+      />
+    </div>
 
-            <div className="hero-bottom">
-              <p className="hero-message">
-                좋은 음악이,
-                <br />
-                더 나은 내일을 만듭니다.
-              </p>
+    <div className="hero-bottom">
+      <p className="hero-message">
+        좋은 음악이,
+        <br />
+        더 나은 내일을 만듭니다.
+      </p>
 
-              <div className="hero-scroll">
-                <span>SCROLL</span>
-                <span className="hero-scroll-arrow">↓</span>
-              </div>
-            </div>
+      <div className="hero-scroll">
+        <span>SCROLL</span>
+        <span className="hero-scroll-arrow">↓</span>
+      </div>
+    </div>
 
-          </div>
-        </section>
+  </div>
+</section>
 
 
         {/* =====================================================
