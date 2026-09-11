@@ -6,7 +6,7 @@ export default function Header() {
       <div className="site-container header-inner">
 
         <nav className="header-nav header-nav-left">
-          <Link href="/" className="active">
+          <Link href="/">
             HOME
           </Link>
 
@@ -27,7 +27,6 @@ export default function Header() {
           </Link>
         </nav>
 
-
         <div className="header-right">
           <div className="header-socials">
             <a href="#" aria-label="YouTube">
@@ -45,22 +44,6 @@ export default function Header() {
             <a href="#" aria-label="Facebook">
               FB
             </a>
-          </div>
-
-          <div className="header-divider" />
-
-          <div className="header-languages">
-            <button type="button">
-              KR
-            </button>
-
-            <button type="button">
-              EN
-            </button>
-
-            <button type="button">
-              VI
-            </button>
           </div>
         </div>
 
