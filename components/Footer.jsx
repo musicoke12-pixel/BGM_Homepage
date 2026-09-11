@@ -7,7 +7,7 @@ export default function Footer() {
 
         <div className="footer-brand">
           <div className="footer-title">
-            BGM CREATIVE STUDIO
+            BGM Entertainment
           </div>
 
           <p className="footer-subtitle">
@@ -54,7 +54,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>
-            © {new Date().getFullYear()} BGM CREATIVE STUDIO
+            © {new Date().getFullYear()} BGM Entertainment
           </span>
 
           <span>
