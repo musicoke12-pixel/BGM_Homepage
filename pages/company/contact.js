@@ -1,164 +1,76 @@
-export default function Contact() {
+export default function ContactPage() {
   return (
-    <>
-      <section className="page-header">
+    <main>
+      <section className="section">
         <div className="site-container">
-          <div className="hero-subtitle">
-            BOX GLOBAL MEDIA
+
+          <div className="contact-page-head">
+            <div>
+              <span className="section-number">05</span>
+              <h1 className="display-title">CONTACT</h1>
+            </div>
+
+            <p className="contact-page-copy">
+              함께 만들고 싶은
+              <br />
+              이야기를 들려주세요.
+            </p>
           </div>
 
-          <h1 className="page-title">
-            CONTACT
-          </h1>
-        </div>
-      </section>
 
-      <section className="section section-line">
-        <div className="site-container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '80px',
-              alignItems: 'start',
-            }}
-          >
-            <div>
-              <div className="hero-subtitle">
-                GET IN TOUCH
-              </div>
+          <div className="contact-grid">
 
-              <h2
-                className="large-copy"
-                style={{
-                  marginTop: '30px',
-                }}
-              >
-                LET'S CREATE
-                <br />
-                SOMETHING
-                <br />
-                <span className="bgm-accent">
-                  TOGETHER.
+            <div className="contact-label">
+              GET IN TOUCH
+            </div>
+
+            <div className="contact-content">
+
+              <div className="contact-block">
+                <span className="contact-block-label">
+                  EMAIL
                 </span>
-              </h2>
-            </div>
 
-            <div>
-              <div
-                style={{
-                  borderTop: '1px solid #bbb',
-                }}
-              >
-                <div
-                  style={{
-                    padding: '28px 0',
-                    borderBottom: '1px solid #ccc',
-                  }}
+                <a
+                  href="mailto:contact@bgmcreativestudio.com"
+                  className="contact-main-link"
                 >
-                  <div className="hero-subtitle">
-                    COMPANY
-                  </div>
-
-                  <div
-                    style={{
-                      marginTop: '10px',
-                      fontSize: '20px',
-                    }}
-                  >
-                    BOX GLOBAL MEDIA
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    padding: '28px 0',
-                    borderBottom: '1px solid #ccc',
-                  }}
-                >
-                  <div className="hero-subtitle">
-                    EMAIL
-                  </div>
-
-                  <div
-                    style={{
-                      marginTop: '10px',
-                      fontSize: '20px',
-                    }}
-                  >
-                    contact@bgment.com
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    padding: '28px 0',
-                    borderBottom: '1px solid #ccc',
-                  }}
-                >
-                  <div className="hero-subtitle">
-                    LOCATION
-                  </div>
-
-                  <div
-                    style={{
-                      marginTop: '10px',
-                      fontSize: '20px',
-                    }}
-                  >
-                    SEOUL · HO CHI MINH CITY
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    padding: '28px 0',
-                    borderBottom: '1px solid #ccc',
-                  }}
-                >
-                  <div className="hero-subtitle">
-                    BUSINESS
-                  </div>
-
-                  <div
-                    style={{
-                      marginTop: '10px',
-                      fontSize: '20px',
-                      lineHeight: '1.7',
-                    }}
-                  >
-                    Artist Management
-                    <br />
-                    Music Production
-                    <br />
-                    Content Production
-                    <br />
-                    Global Entertainment
-                  </div>
-                </div>
+                  contact@bgmcreativestudio.com
+                </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section
-        className="section section-line"
-        style={{
-          background: '#111',
-          color: '#fff',
-        }}
-      >
-        <div className="site-container">
-          <div className="large-copy">
-            BOX GLOBAL
-            <br />
-            <span className="bgm-accent">
-              MEDIA.
-            </span>
+
+              <div className="contact-block">
+                <span className="contact-block-label">
+                  BUSINESS
+                </span>
+
+                <p>
+                  음악 제작, 아티스트 협업,
+                  <br />
+                  콘텐츠 제작 및 기타 비즈니스 문의
+                </p>
+              </div>
+
+
+              <div className="contact-block">
+                <span className="contact-block-label">
+                  LOCATION
+                </span>
+
+                <p>
+                  SEOUL
+                  <br />
+                  HO CHI MINH CITY
+                </p>
+              </div>
+
+            </div>
+
           </div>
+
         </div>
       </section>
-    </>
+    </main>
   );
 }
