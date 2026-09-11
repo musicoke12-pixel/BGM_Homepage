@@ -100,9 +100,14 @@ main {
 ========================================================= */
 
 .site-header {
-  position: relative;
-  z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
   background: rgba(247, 245, 239, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
   border-bottom: 1px solid rgba(17, 17, 17, 0.14);
 }
 
