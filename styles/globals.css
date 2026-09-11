@@ -139,7 +139,38 @@ main {
 .header-socials {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 17px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  color: #111;
+
+  opacity: 0.62;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  fill: currentColor;
+}
+
+.social-icon:hover {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 .header-socials a {
