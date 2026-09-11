@@ -1,15 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-/* =====================================================
-   BGM — BOX GLOBAL MEDIA
-   GLOBAL
-===================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -19,18 +17,13 @@ html {
 }
 
 body {
-  background: #f7f7f4;
+  background: #f5f2ec;
   color: #111111;
-
   font-family:
     Arial,
     Helvetica,
-    "Pretendard",
-    "Noto Sans KR",
     sans-serif;
-
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 a {
@@ -43,938 +36,599 @@ img {
   max-width: 100%;
 }
 
-button,
-input,
-textarea {
+button {
   font: inherit;
 }
 
 
-/* =====================================================
-   LAYOUT
-===================================================== */
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 .site-container {
-  width: 100%;
-  max-width: 1600px;
-
+  width: min(92%, 1440px);
   margin: 0 auto;
-
-  padding-left: 48px;
-  padding-right: 48px;
 }
 
-.section {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-.section-line {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+main {
+  overflow: hidden;
 }
 
 
-/* =====================================================
-   TYPOGRAPHY
-===================================================== */
-
-.display-title {
-  font-size: clamp(64px, 9vw, 150px);
-
-  line-height: 0.88;
-
-  letter-spacing: -0.065em;
-
-  font-weight: 700;
-}
-
-.section-title {
-  font-size: clamp(38px, 5vw, 78px);
-
-  line-height: 1;
-
-  letter-spacing: -0.05em;
-
-  font-weight: 700;
-}
-
-.large-copy {
-  font-size: clamp(28px, 3.5vw, 60px);
-
-  line-height: 1.05;
-
-  letter-spacing: -0.045em;
-}
-
-.body-copy {
-  font-size: 16px;
-
-  line-height: 1.7;
-
-  color: #555;
-}
-
-
-/* =====================================================
-   ACCENT
-===================================================== */
-
-.bgm-accent {
-  color: #55e9f1;
-}
-
-.bgm-accent-bg {
-  background: #55e9f1;
-}
-
-
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .site-header {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 82px;
-
-  z-index: 1000;
-
-  background: rgba(247, 247, 244, 0.97);
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 100;
+  background: #f5f2ec;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
 }
 
 .header-inner {
-  height: 82px;
-
+  min-height: 74px;
   display: flex;
-
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
 }
-
-
-/* =====================================================
-   HEADER LOGO
-===================================================== */
-
-.header-brand {
-  display: flex;
-
-  align-items: center;
-
-  flex-shrink: 0;
-}
-
-.header-logo-frame {
-  display: flex;
-
-  align-items: center;
-}
-
-.header-logo-image {
-  width: 190px;
-  height: auto;
-
-  display: block;
-}
-
-
-/* =====================================================
-   HEADER NAVIGATION
-===================================================== */
 
 .header-nav {
   display: flex;
-
   align-items: center;
-
-  gap: 38px;
+  gap: 34px;
 }
 
 .header-nav a {
   position: relative;
-
-  font-size: 13px;
-
+  font-size: 12px;
   font-weight: 600;
-
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  transition: opacity 0.25s ease;
 }
 
-.header-nav a::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -6px;
-
-  width: 0;
-  height: 1px;
-
-  background: #111;
-
-  transition: width 0.25s ease;
+.header-nav a:hover {
+  opacity: 0.45;
 }
 
-.header-nav a:hover::after {
-  width: 100%;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero {
-  min-height: 100vh;
-
-  padding-top: 130px;
-
+.header-right {
   display: flex;
-
-  align-items: flex-end;
+  align-items: center;
 }
 
-.hero-inner {
-  width: 100%;
-
-  padding-bottom: 70px;
+.header-socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
-.hero-subtitle {
-  margin-bottom: 28px;
-
-  font-size: 13px;
-
+.header-socials a {
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
 
-  letter-spacing: 0.14em;
+.header-socials a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.home-hero {
+  min-height: calc(100vh - 74px);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+  background:
+    radial-gradient(
+      circle at 78% 38%,
+      rgba(210, 225, 235, 0.6),
+      transparent 31%
+    ),
+    linear-gradient(
+      135deg,
+      #f5f2ec 0%,
+      #f5f2ec 62%,
+      #eceff0 100%
+    );
+}
+
+.home-hero-inner {
+  position: relative;
+  min-height: calc(100vh - 74px);
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 54px;
+}
+
+.hero-small-label {
+  align-self: center;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.2em;
+  color: rgba(17, 17, 17, 0.55);
+}
+
+.hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 130px;
+}
+
+.hero-logo {
+  width: min(540px, 52vw);
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-bottom {
-  margin-top: 60px;
-
+  grid-column: 1 / -1;
   display: flex;
-
   align-items: flex-end;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
-.hero-description {
-  max-width: 420px;
-
-  font-size: 17px;
-
-  line-height: 1.65;
-
-  color: #555;
+.hero-message {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 31px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
 }
 
-
-/* =====================================================
-   SECTION HEADER
-===================================================== */
-
-.section-header {
+.hero-scroll {
   display: flex;
-
-  align-items: flex-end;
-  justify-content: space-between;
-
-  margin-bottom: 50px;
-}
-
-.section-link {
-  font-size: 13px;
-
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
   font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(17, 17, 17, 0.55);
+}
 
-  letter-spacing: 0.08em;
+.hero-scroll-arrow {
+  font-size: 18px;
+  line-height: 1;
 }
 
 
-/* =====================================================
-   ARTIST GRID
-===================================================== */
+/* =========================================================
+   HOME SECTIONS
+========================================================= */
 
-.artist-grid {
+.home-section {
+  padding: 130px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+}
+
+.home-section-grid {
   display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 48px 22px;
+  grid-template-columns: 260px 1fr;
+  gap: 80px;
 }
 
-.artist-card {
+.section-intro {
+  position: relative;
+}
+
+.section-number {
+  margin-bottom: 50px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(17, 17, 17, 0.45);
+}
+
+.section-intro h2 {
+  margin: 0 0 30px;
+  font-size: clamp(36px, 4.6vw, 72px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.section-intro p {
+  margin: 0 0 46px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #111;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  transition: gap 0.25s ease;
+}
+
+.text-link:hover {
+  gap: 28px;
+}
+
+
+/* =========================================================
+   HOME ARTISTS
+========================================================= */
+
+.home-artists-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+}
+
+.home-artist-card {
   display: block;
 }
 
-.artist-image-wrap {
+.home-artist-image-wrap {
   position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 4 / 5;
-
   overflow: hidden;
-
-  background: #e9e9e5;
+  aspect-ratio: 4 / 5;
+  background: #e8e5df;
 }
 
-.artist-image-wrap img {
+.home-artist-image {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  transition:
-    transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.artist-card:hover .artist-image-wrap img {
-  transform: scale(1.035);
+.home-artist-card:hover .home-artist-image {
+  transform: scale(1.025);
 }
 
-.artist-card-info {
+.home-artist-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
   padding-top: 18px;
 }
 
-.artist-name {
-  font-size: 23px;
-
+.home-artist-info h3 {
+  margin: 0 0 7px;
+  font-size: 17px;
   font-weight: 600;
-
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 
-.artist-type {
-  margin-top: 5px;
-
-  font-size: 12px;
-
-  color: #888;
-
+.home-artist-info p {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(17, 17, 17, 0.48);
   text-transform: uppercase;
+}
 
+.artist-number {
+  padding-top: 2px;
+  font-size: 10px;
   letter-spacing: 0.08em;
+  color: rgba(17, 17, 17, 0.38);
 }
 
 
-/* =====================================================
-   NEWS
-===================================================== */
+/* =========================================================
+   HOME NEWS
+========================================================= */
 
-.news-list {
-  border-top: 1px solid #bbb;
+.news-section {
+  background: #f2efe9;
 }
 
-.news-item {
+.home-news-list {
+  border-top: 1px solid #111;
+}
+
+.home-news-row {
   display: grid;
-
-  grid-template-columns: 160px 100px 1fr 50px;
-
-  gap: 25px;
-
+  grid-template-columns: 150px 1fr 30px;
   align-items: center;
-
-  min-height: 92px;
-
-  border-bottom: 1px solid #ccc;
-
+  gap: 25px;
+  min-height: 94px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.2);
   transition:
     padding-left 0.25s ease,
     background 0.25s ease;
 }
 
-.news-item:hover {
-  padding-left: 14px;
-
-  background: rgba(255, 255, 255, 0.45);
+.home-news-row:hover {
+  padding-left: 10px;
+  background: rgba(255, 255, 255, 0.28);
 }
 
-.news-date,
-.news-category {
-  font-size: 12px;
-
-  color: #777;
-}
-
-.news-title {
-  font-size: 20px;
-
-  letter-spacing: -0.025em;
-}
-
-.news-arrow {
-  font-size: 22px;
-
-  text-align: right;
-}
-
-
-/* =====================================================
-   COMPANY STATEMENT
-===================================================== */
-
-.company-statement {
-  min-height: 70vh;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-}
-
-.company-statement-small {
-  margin-top: 40px;
-
-  font-size: 13px;
-
-  letter-spacing: 0.12em;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.site-footer {
-  background: #111;
-
-  color: #fff;
-
-  padding: 65px 0 32px;
-}
-
-.footer-top {
-  display: flex;
-
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-
-/* =====================================================
-   FOOTER LOGO
-===================================================== */
-
-.footer-brand {
-  display: flex;
-
-  align-items: flex-start;
-}
-
-.footer-brand a {
-  display: block;
-}
-
-.footer-logo-frame {
-  display: block;
-}
-
-.footer-logo-image {
-  width: 250px;
-  height: auto;
-
-  display: block;
-
-  /*
-     현재 PNG 배경이 밝고 로고가 검정이므로
-     footer에서는 전체를 반전
-  */
-  filter: invert(1) grayscale(1);
-}
-
-
-/* =====================================================
-   FOOTER INFO
-===================================================== */
-
-.footer-company {
-  text-align: right;
-
-  font-size: 12px;
-
-  line-height: 1.8;
-
-  color: #aaa;
-}
-
-.footer-bottom {
-  margin-top: 55px;
-
-  padding-top: 22px;
-
-  border-top: 1px solid #333;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
+.home-news-date {
   font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(17, 17, 17, 0.48);
+}
 
-  color: #777;
+.home-news-title {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.home-news-arrow {
+  justify-self: end;
+  font-size: 18px;
+}
+
+.empty-message {
+  padding: 40px 0;
+  font-size: 13px;
+  color: rgba(17, 17, 17, 0.45);
 }
 
 
-/* =====================================================
-   DETAIL PAGE HEADER
-===================================================== */
+/* =========================================================
+   GENERAL PAGE SUPPORT
+========================================================= */
 
-.page-header {
-  padding-top: 180px;
-
-  padding-bottom: 65px;
+.section {
+  padding: 100px 0;
 }
 
-.page-title {
-  font-size: clamp(58px, 9vw, 130px);
+.section-line {
+  border-top: 1px solid rgba(17, 17, 17, 0.16);
+}
 
-  line-height: 0.9;
-
-  letter-spacing: -0.06em;
-
+.display-title {
+  margin: 0;
+  font-size: clamp(52px, 8vw, 120px);
   font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
 }
 
-
-/* =====================================================
-   ARTIST DETAIL
-===================================================== */
-
-.artist-detail-hero {
+.artist-grid {
   display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  min-height: 720px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px 28px;
 }
 
-.artist-detail-image {
-  height: 100%;
-
-  min-height: 720px;
-
-  background: #e7e7e3;
-}
-
-.artist-detail-image img {
+.artist-card img {
   width: 100%;
-  height: 100%;
-
+  aspect-ratio: 4 / 5;
   object-fit: cover;
 }
 
-.artist-detail-content {
-  padding: 80px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: flex-end;
+.news-list {
+  border-top: 1px solid #111;
 }
 
-.artist-detail-name {
-  font-size: clamp(55px, 7vw, 110px);
-
-  line-height: 0.9;
-
-  letter-spacing: -0.06em;
-}
-
-.artist-detail-en {
-  margin-top: 15px;
-
-  font-size: 18px;
-
-  color: #777;
-}
-
-.artist-detail-summary {
-  max-width: 550px;
-
-  margin-top: 50px;
-
-  font-size: 18px;
-
-  line-height: 1.7;
+.news-item {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.18);
 }
 
 
-/* =====================================================
-   ARTIST NOTION CONTENT
-===================================================== */
+/* =========================================================
+   FOOTER
+========================================================= */
 
-.artist-notion-content {
-  width: 100%;
-
-  max-width: 900px;
-
-  margin: 0 auto;
-
-  font-size: 17px;
-
-  line-height: 1.9;
-
-  color: #222;
+.site-footer {
+  padding: 80px 0 45px;
+  background: #111111;
+  color: #f5f2ec;
 }
 
-.artist-notion-content p {
-  margin-bottom: 24px;
-}
-
-.artist-notion-content h2 {
-  margin-top: 60px;
-  margin-bottom: 24px;
-
-  font-size: 36px;
-
-  line-height: 1.25;
-
-  letter-spacing: -0.035em;
-}
-
-.artist-notion-content h3 {
-  margin-top: 50px;
-  margin-bottom: 20px;
-
-  font-size: 28px;
-
-  line-height: 1.3;
-
-  letter-spacing: -0.03em;
-}
-
-.artist-notion-content h4 {
-  margin-top: 40px;
-  margin-bottom: 18px;
-
-  font-size: 22px;
-
-  line-height: 1.4;
-}
-
-.artist-notion-content ul,
-.artist-notion-content ol {
-  margin-bottom: 16px;
-
-  padding-left: 24px;
-}
-
-.artist-notion-content li {
-  margin-bottom: 8px;
-}
-
-.artist-notion-content blockquote {
-  margin: 40px 0;
-
-  padding-left: 22px;
-
-  border-left: 2px solid #111;
-
-  font-size: 20px;
-
-  line-height: 1.7;
-}
-
-.artist-notion-content hr {
-  margin: 55px 0;
-
-  border: 0;
-
-  border-top: 1px solid #ccc;
-}
-
-.artist-notion-content figure {
-  margin: 50px 0;
-}
-
-.artist-notion-content figure img {
-  width: 100%;
-  height: auto;
-}
-
-.artist-notion-content figcaption {
-  margin-top: 10px;
-
-  font-size: 12px;
-
-  color: #888;
+.site-footer a {
+  color: inherit;
 }
 
 
-/* =====================================================
-   NEWS ARTICLE
-===================================================== */
-
-.article-wrap {
-  width: 100%;
-
-  max-width: 950px;
-
-  margin: 0 auto;
-
-  padding:
-    180px
-    48px
-    130px;
-}
-
-.article-category {
-  margin-bottom: 20px;
-
-  font-size: 12px;
-
-  letter-spacing: 0.1em;
-
-  color: #777;
-}
-
-.article-title {
-  font-size: clamp(42px, 6vw, 82px);
-
-  line-height: 1.05;
-
-  letter-spacing: -0.05em;
-}
-
-.article-date {
-  margin-top: 30px;
-
-  font-size: 13px;
-
-  color: #888;
-}
-
-.article-body {
-  margin-top: 80px;
-
-  font-size: 17px;
-
-  line-height: 1.9;
-}
-
-.article-body p {
-  margin-bottom: 25px;
-}
-
-
-/* =====================================================
+/* =========================================================
    TABLET
-===================================================== */
+========================================================= */
 
-@media (max-width: 900px) {
-
-  .site-container {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
-
-  /* HEADER */
-
-  .site-header {
-    height: 72px;
-  }
-
-  .header-inner {
-    height: 72px;
-  }
-
-  .header-logo-image {
-    width: 160px;
-  }
-
+@media (max-width: 1000px) {
   .header-nav {
-    gap: 16px;
+    gap: 20px;
   }
 
-  .header-nav a {
-    font-size: 11px;
+  .home-hero-inner {
+    grid-template-columns: 120px 1fr;
   }
 
-
-  /* SECTION */
-
-  .section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+  .hero-logo-wrap {
+    padding-right: 60px;
   }
 
+  .home-section-grid {
+    grid-template-columns: 190px 1fr;
+    gap: 45px;
+  }
 
-  /* ARTIST */
+  .home-artists-grid {
+    gap: 24px;
+  }
 
   .artist-grid {
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 35px 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .artist-detail-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .artist-detail-image {
-    min-height: auto;
-
-    aspect-ratio: 4 / 5;
-  }
-
-  .artist-detail-content {
-    padding:
-      50px
-      22px
-      80px;
-  }
-
-
-  /* NEWS */
-
-  .news-item {
-    grid-template-columns:
-      85px
-      1fr
-      25px;
-
-    gap: 10px;
-  }
-
-  .news-category {
-    display: none;
-  }
-
-
-  /* FOOTER */
-
-  .footer-top {
-    flex-direction: column;
-
-    gap: 40px;
-  }
-
-  .footer-logo-image {
-    width: 215px;
-  }
-
-  .footer-company {
-    text-align: left;
-  }
-
-  .footer-bottom {
-    margin-top: 42px;
-  }
-
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
-@media (max-width: 600px) {
-
-  /* HEADER */
+@media (max-width: 720px) {
+  .site-container {
+    width: calc(100% - 32px);
+  }
 
   .site-header {
-    height: 64px;
+    position: relative;
   }
 
   .header-inner {
-    height: 64px;
-  }
-
-  .header-logo-image {
-    width: 125px;
+    min-height: 64px;
+    overflow-x: auto;
+    gap: 30px;
   }
 
   .header-nav {
-    gap: 11px;
+    flex-shrink: 0;
+    gap: 20px;
   }
 
   .header-nav a {
-    font-size: 9px;
-
-    letter-spacing: 0.02em;
+    font-size: 10px;
   }
 
+  .header-socials {
+    flex-shrink: 0;
+    gap: 13px;
+  }
 
-  /*
-     모바일 공간이 부족하므로
-     COMPANY 메뉴만 숨김
-  */
-
-  .header-nav a:nth-child(1) {
-    display: none;
+  .header-socials a {
+    font-size: 9px;
   }
 
 
   /* HERO */
 
-  .hero {
-    min-height: 88vh;
+  .home-hero,
+  .home-hero-inner {
+    min-height: calc(100svh - 64px);
+  }
 
-    padding-top: 100px;
+  .home-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    padding-top: 46px;
+    padding-bottom: 32px;
+  }
+
+  .hero-small-label {
+    align-self: flex-start;
+    font-size: 8px;
+  }
+
+  .hero-logo-wrap {
+    flex: 1;
+    padding: 30px 0;
+  }
+
+  .hero-logo {
+    width: min(84vw, 430px);
+    margin: auto;
   }
 
   .hero-bottom {
-    flex-direction: column;
+    margin-top: 0;
+  }
 
-    align-items: flex-start;
+  .hero-message {
+    font-size: 20px;
+  }
 
-    gap: 35px;
+  .hero-scroll span:first-child {
+    display: none;
   }
 
 
-  /* ARTIST */
+  /* SECTIONS */
 
-  .artist-grid {
+  .home-section {
+    padding: 85px 0;
+  }
+
+  .home-section-grid {
+    display: block;
+  }
+
+  .section-intro {
+    margin-bottom: 48px;
+  }
+
+  .section-number {
+    margin-bottom: 25px;
+  }
+
+  .section-intro h2 {
+    margin-bottom: 18px;
+    font-size: 46px;
+  }
+
+  .section-intro p {
+    margin-bottom: 25px;
+  }
+
+
+  /* ARTISTS */
+
+  .home-artists-grid {
     grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .home-artist-image-wrap {
+    aspect-ratio: 4 / 5;
   }
 
 
   /* NEWS */
 
-  .news-title {
-    font-size: 16px;
+  .home-news-row {
+    grid-template-columns: 1fr 24px;
+    gap: 12px;
+    min-height: 90px;
+    padding: 18px 0;
+  }
+
+  .home-news-date {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 9px;
+  }
+
+  .home-news-title {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .home-news-arrow {
+    grid-column: 2;
+    grid-row: 1 / 3;
   }
 
 
-  /* ARTICLE */
+  /* GENERAL */
 
-  .article-wrap {
-    padding-left: 22px;
-    padding-right: 22px;
+  .section {
+    padding: 70px 0;
   }
 
-
-  /* FOOTER */
-
-  .site-footer {
-    padding-top: 50px;
+  .artist-grid {
+    grid-template-columns: 1fr;
   }
-
-  .footer-logo-image {
-    width: 185px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 8px;
-  }
-
 }
